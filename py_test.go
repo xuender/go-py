@@ -9,18 +9,18 @@ import (
 )
 
 func ExamplePinyin() {
-	fmt.Println(gopy.Pinyin("厂长"))
-	fmt.Println(gopy.Pinyin("厂长", gopy.Tone))
-	fmt.Println(gopy.Pinyin("厂长", gopy.NoTone))
-	fmt.Println(gopy.Pinyin("厂长", gopy.Init))
-	fmt.Println(gopy.Initials("厂长"))
+	fmt.Println(gopy.Pinyin("阿弥陀佛"))
+	fmt.Println(gopy.Pinyin("阿弥陀佛", gopy.Tone))
+	fmt.Println(gopy.Pinyin("阿弥陀佛", gopy.NoTone))
+	fmt.Println(gopy.Pinyin("阿弥陀佛", gopy.Init))
+	fmt.Println(gopy.Initials("阿弥陀佛"))
 
 	// output:
-	// [cha3ng zha3ng]
-	// [chǎng zhǎng]
-	// [chang zhang]
-	// [c z]
-	// cz
+	// [a1 mi2 tuo2 fu2]
+	// [ā mí tuó fú]
+	// [a mi tuo fu]
+	// [a m t f]
+	// amtf
 }
 
 func TestRune(t *testing.T) {
