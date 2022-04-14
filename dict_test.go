@@ -24,7 +24,7 @@ func TestDict_Rune(t *testing.T) {
 func TestStyle(t *testing.T) {
 	t.Parallel()
 
-	assert.Equal(t, "a", gopy.Style("a1i", gopy.Initial))
+	assert.Equal(t, "a", gopy.Style("a1i", gopy.Init))
 	assert.Equal(t, "a1", gopy.Style("a1", gopy.Normal))
 	assert.Equal(t, "ā", gopy.Style("a1", gopy.Tone))
 	assert.Equal(t, "ai", gopy.Style("a1i", gopy.NoTone))

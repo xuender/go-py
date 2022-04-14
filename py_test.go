@@ -1,11 +1,27 @@
 package gopy_test
 
 import (
+	"fmt"
 	"testing"
 
 	"gitee.com/xuender/oils/assert"
 	"github.com/xuender/gopy"
 )
+
+func ExamplePinyin() {
+	fmt.Println(gopy.Pinyin("厂长"))
+	fmt.Println(gopy.Pinyin("厂长", gopy.Tone))
+	fmt.Println(gopy.Pinyin("厂长", gopy.NoTone))
+	fmt.Println(gopy.Pinyin("厂长", gopy.Init))
+	fmt.Println(gopy.Initials("厂长"))
+
+	// output:
+	// [cha3ng zha3ng]
+	// [chǎng zhǎng]
+	// [chang zhang]
+	// [c z]
+	// cz
+}
 
 func TestRune(t *testing.T) {
 	t.Parallel()
@@ -34,4 +50,10 @@ func TestPinyins(t *testing.T) {
 	assert.Equal(t, "1", gopy.Pinyins("123")[0][0])
 	assert.Equals(t, []string{"zha3ng", "cha2ng"}, gopy.Pinyins("长")[0])
 	assert.Equals(t, []string{"zhang", "chang"}, gopy.Pinyins("长", gopy.NoTone)[0])
+}
+
+func TestPy(t *testing.T) {
+	t.Parallel()
+
+	assert.Equal(t, "chang zhang", gopy.Py("厂长", " ", gopy.NoTone))
 }

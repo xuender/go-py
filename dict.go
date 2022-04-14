@@ -1,7 +1,6 @@
 package gopy
 
 import (
-	_ "embed"
 	"strings"
 	"unicode"
 
@@ -10,6 +9,7 @@ import (
 
 type Dict map[rune][]int16
 
+// nolint
 var phonetic = map[string]string{
 	"a1": "ā",
 	"a2": "á",
@@ -54,8 +54,10 @@ func Style(pinyin string, option Option) string {
 		slice.Del([]rune("1234")...)
 
 		return string(slice)
-	case Initial:
+	case Init:
 		return pinyin[:1]
+	case Normal:
+		return pinyin
 	default:
 		return pinyin
 	}
@@ -74,14 +76,14 @@ func IsHan(han rune) bool {
 }
 
 func (p Dict) Rune(han rune, option Option) []string {
-	py, has := p[han]
+	pinyin, has := p[han]
 	if !has {
 		return []string{string(han)}
 	}
 
-	ret := make([]string, len(py))
-	for i, pyIndex := range py {
-		ret[i] = Style(tones[pyIndex], option)
+	ret := make([]string, len(pinyin))
+	for index, pyIndex := range pinyin {
+		ret[index] = Style(tones[pyIndex], option)
 	}
 
 	return ret

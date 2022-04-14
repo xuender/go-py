@@ -10,8 +10,12 @@ const (
 	Normal Option = iota
 	Tone
 	NoTone
-	Initial
+	Init
 )
+
+func Py(str, sep string, options ...Option) string {
+	return strings.Join(Pinyin(str, options...), sep)
+}
 
 func Pinyin(str string, options ...Option) []string {
 	runes := []rune(str)
@@ -46,7 +50,7 @@ func Pinyins(str string, options ...Option) [][]string {
 }
 
 func Initials(str string) string {
-	return strings.Join(Pinyin(str, Initial), "")
+	return Py(str, "", Init)
 }
 
 func Rune(han rune) []string {
