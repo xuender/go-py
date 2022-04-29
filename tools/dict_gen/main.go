@@ -8,7 +8,7 @@ import (
 	"sort"
 	"strings"
 
-	"gitee.com/xuender/oils/base"
+	"github.com/xuender/oils/base"
 )
 
 func main() {

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"gitee.com/xuender/oils/assert"
 	"github.com/xuender/gopy"
+	"github.com/xuender/oils/assert"
 )
 
 func ExamplePinyin() {

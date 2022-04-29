@@ -6,9 +6,9 @@ import (
 	"os"
 	"strings"
 
-	"gitee.com/xuender/oils/base"
 	"github.com/xuender/gopy"
-	"github.com/xuender/gopy/cmd"
+	"github.com/xuender/oils/base"
+	"github.com/xuender/oils/oss"
 )
 
 func main() {
@@ -81,7 +81,9 @@ func toPinyin(str, sep, hsep string, heteronym bool, option gopy.Option) string 
 }
 
 func usage() {
-	fmt.Fprintf(flag.CommandLine.Output(), "gopy[%s]\n\n", cmd.ModVersion)
+	mod := oss.GetMod("gopy")
+
+	fmt.Fprintf(flag.CommandLine.Output(), "gopy[%s]\n\n", mod.Version)
 	fmt.Fprintf(flag.CommandLine.Output(), "chinese to pinyin.\n\n")
 	fmt.Fprintf(flag.CommandLine.Output(), "Usage of %s:\n", os.Args[0])
 	flag.PrintDefaults()
@@ -92,7 +94,7 @@ Examples:
 	gopy -t -h -hs=\; 阿弥陀佛
 	gopy -n 阿弥陀佛
 `)
-	fmt.Fprintf(flag.CommandLine.Output(), "\nmod: %s\ngit: %s\n", cmd.ModPath, cmd.ModSum)
+	fmt.Fprintf(flag.CommandLine.Output(), "\nmod: %s\ngit: %s\n", mod.Path, mod.Sum)
 }
 
 func Panic() {

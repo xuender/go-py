@@ -4,7 +4,7 @@ import (
 	"strings"
 	"unicode"
 
-	"gitee.com/xuender/oils/base"
+	"github.com/xuender/oils/base"
 )
 
 type Dict map[rune][]int16

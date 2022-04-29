@@ -1,4 +1,4 @@
-gitee.com/xuender/oils v1.1.13 h1:Lo2ekRm8znW5A+0B9FL4kyBDG3+VPAxANj1kqpGnQ9Y=
-gitee.com/xuender/oils v1.1.13/go.mod h1:VenRcTnBYRBLkcBdiROLZRVZmdmGv7V29TxjZatBQJI=
-golang.org/x/exp v0.0.0-20220407100705-7b9b53b0aca4 h1:K3x+yU+fbot38x5bQbU2QqUAVyYLEktdNH2GxZLnM3U=
-golang.org/x/exp v0.0.0-20220407100705-7b9b53b0aca4/go.mod h1:lgLbSvA5ygNOMpwM/9anMpWVlVJ7Z+cHWq/eFuinpGE=
+github.com/xuender/oils v0.1.3 h1:LTT7n+uVjLJSgIlf2q+CTxrM9I15i0JpcAR4P0DMBGU=
+github.com/xuender/oils v0.1.3/go.mod h1:9JMUEtPKL6jtNTMuTmvAhn/ZYBWdICkrROuNjUkk4qw=
+golang.org/x/exp v0.0.0-20220428152302-39d4317da171 h1:TfdoLivD44QwvssI9Sv1xwa5DcL5XQr4au4sZ2F2NV4=
+golang.org/x/exp v0.0.0-20220428152302-39d4317da171/go.mod h1:lgLbSvA5ygNOMpwM/9anMpWVlVJ7Z+cHWq/eFuinpGE=
