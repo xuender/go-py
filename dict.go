@@ -4,6 +4,7 @@ import (
 	"strings"
 	"unicode"
 
+	"github.com/xuender/gopy/data"
 	"github.com/xuender/oils/base"
 )
 
@@ -83,7 +84,7 @@ func (p Dict) Rune(han rune, option Option) []string {
 
 	ret := make([]string, len(pinyin))
 	for index, pyIndex := range pinyin {
-		ret[index] = Style(tones[pyIndex], option)
+		ret[index] = Style(data.Tones[pyIndex], option)
 	}
 
 	return ret

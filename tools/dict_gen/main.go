@@ -32,7 +32,7 @@ func main() {
 		pySet.Add(strings.Split(py, ",")...)
 	}
 
-	gofile := base.Panic1(os.Create("dict_gen.go"))
+	gofile := base.Panic1(os.Create("data/dict_gen.go"))
 	defer gofile.Close()
 
 	pySlice := base.NewSlice(pySet.Slice()...)
@@ -64,12 +64,12 @@ func main() {
 		}
 	}
 
-	_, _ = gofile.WriteString("\n\nvar data = Dict(map[rune][]int16{\n")
+	_, _ = gofile.WriteString("\n\nvar data = map[rune][]int16{\n")
 
 	for k, v := range tones {
 		s := base.NewSlice(v...)
 		_, _ = gofile.WriteString(fmt.Sprintf("\t0x%x:{%s},\n", k, s.Join(",")))
 	}
 
-	_, _ = gofile.WriteString("})\n")
+	_, _ = gofile.WriteString("}\n")
 }

@@ -2,6 +2,8 @@ package gopy
 
 import (
 	"strings"
+
+	"github.com/xuender/gopy/data"
 )
 
 type Option int
@@ -18,6 +20,7 @@ func Py(str, sep string, options ...Option) string {
 }
 
 func Pinyin(str string, options ...Option) []string {
+	dict := Dict(data.Dict)
 	runes := []rune(str)
 	ret := make([]string, len(runes))
 	style := Normal
@@ -27,13 +30,14 @@ func Pinyin(str string, options ...Option) []string {
 	}
 
 	for i, han := range runes {
-		ret[i] = data.Rune(han, style)[0]
+		ret[i] = dict.Rune(han, style)[0]
 	}
 
 	return ret
 }
 
 func Pinyins(str string, options ...Option) [][]string {
+	dict := Dict(data.Dict)
 	runes := []rune(str)
 	ret := make([][]string, len(runes))
 	style := Normal
@@ -43,7 +47,7 @@ func Pinyins(str string, options ...Option) [][]string {
 	}
 
 	for i, han := range runes {
-		ret[i] = data.Rune(han, style)
+		ret[i] = dict.Rune(han, style)
 	}
 
 	return ret
@@ -54,5 +58,7 @@ func Initials(str string) string {
 }
 
 func Rune(han rune) []string {
-	return data.Rune(han, Tone)
+	dict := Dict(data.Dict)
+
+	return dict.Rune(han, Tone)
 }
