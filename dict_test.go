@@ -12,8 +12,10 @@ func TestDict_Rune(t *testing.T) {
 	t.Parallel()
 
 	data := gopy.Dict{}
-	data[38463] = []int16{1}
-	data[38271] = []int16{116, 1405}
+	// data[38463] = []int16{1}
+	// data[38271] = []int16{116, 1405}
+	data[38463] = "1"
+	data[38271] = "116,1405"
 
 	assert.Equals(t, []string{"1"}, data.Rune('1', gopy.Normal))
 	assert.Equals(t, []string{"教"}, data.Rune('教', gopy.Normal))

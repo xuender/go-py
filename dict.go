@@ -4,11 +4,10 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/xuender/gopy/data"
 	"github.com/xuender/oils/base"
 )
 
-type Dict map[rune][]int16
+type Dict map[rune]string
 
 // nolint
 var phonetic = map[string]string{
@@ -82,9 +81,11 @@ func (p Dict) Rune(han rune, option Option) []string {
 		return []string{string(han)}
 	}
 
-	ret := make([]string, len(pinyin))
-	for index, pyIndex := range pinyin {
-		ret[index] = Style(data.Tones[pyIndex], option)
+	pys := strings.Split(pinyin, ",")
+	ret := make([]string, len(pys))
+	for index, pyIndex := range pys {
+		num, _ := base.ParseInteger[int](pyIndex)
+		ret[index] = Style(tones[num], option)
 	}
 
 	return ret
