@@ -1,7 +1,7 @@
 # goPY
 
 [![GoCI](https://github.com/xuender/gopy/workflows/Go/badge.svg)](https://github.com/xuender/gopy/actions)
-[![codecov](https://codecov.io/gh/xuender/gopy/branch/main/graph/badge.svg?token=8CTpNIHxYT)](https://codecov.io/gh/xuender/gopy)
+[![codecov](https://codecov.io/gh/xuender/gopy/branch/main/graph/badge.svg?token=1QQNBH82CM)](https://codecov.io/gh/xuender/gopy)
 [![Go Report Card](https://goreportcard.com/badge/github.com/xuender/gopy)](https://goreportcard.com/report/github.com/xuender/gopy)
 [![GoDoc](https://godoc.org/github.com/xuender/gopy?status.svg)](https://pkg.go.dev/github.com/xuender/gopy)
 [![Gitter](https://badges.gitter.im/xuender-gopy/community.svg)](https://gitter.im/xuender-gopy/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)

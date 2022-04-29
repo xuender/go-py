@@ -20,6 +20,8 @@ jobs:
           go-version: 1.18
       - name: Init Go Modules
         run: go mod tidy
+      - name: Test
+        run: go test -v ./...
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3.1.0
         with:
@@ -27,23 +29,8 @@ jobs:
           args: --timeout=5m
           only-new-issues: false
           working-directory: .
-  test:
-    needs: golangci-lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: 1.18
-
-      - name: Test
-        run: go test -v ./...
-
       - name: Coverage
         run: go test ./... -race -coverprofile=coverage.txt -covermode=atomic
-
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2.0.2
         with:
