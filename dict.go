@@ -7,7 +7,7 @@ import (
 	"github.com/xuender/oils/base"
 )
 
-type Dict map[rune]string
+type Dict map[rune][10]int16
 
 // nolint
 var phonetic = map[string]string{
@@ -81,11 +81,13 @@ func (p Dict) Rune(han rune, option Option) []string {
 		return []string{string(han)}
 	}
 
-	pys := strings.Split(pinyin, ",")
-	ret := make([]string, len(pys))
-	for index, pyIndex := range pys {
-		num, _ := base.ParseInteger[int](pyIndex)
-		ret[index] = Style(tones[num], option)
+	ret := []string{}
+
+	for _, pyIndex := range pinyin {
+		out := Style(tones[pyIndex], option)
+		if out != " " {
+			ret = append(ret, out)
+		}
 	}
 
 	return ret
