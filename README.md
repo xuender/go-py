@@ -1,13 +1,13 @@
 # go-py
 
-[![GoCI](https://github.com/xuender/go-py/workflows/Go/badge.svg)](https://github.com/xuender/gopy/actions)
-[![codecov](https://codecov.io/gh/xuender/go-py/branch/main/graph/badge.svg?token=1QQNBH82CM)](https://codecov.io/gh/xuender/gopy)
-[![Go Report Card](https://goreportcard.com/badge/github.com/xuender/go-py)](https://goreportcard.com/report/github.com/xuender/gopy)
-[![GoDoc](https://godoc.org/github.com/xuender/go-py?status.svg)](https://pkg.go.dev/github.com/xuender/gopy)
-[![Gitter](https://badges.gitter.im/xuender-go-py/community.svg)](https://gitter.im/xuender-gopy/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![GitHub license](https://img.shields.io/github/license/xuender/go-py)](https://github.com/xuender/gopy/blob/main/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/xuender/go-py)](https://github.com/xuender/gopy/issues)
-[![GitHub stars](https://img.shields.io/github/stars/xuender/go-py)](https://github.com/xuender/gopy/stargazers)
+[![GoCI](https://github.com/xuender/go-py/workflows/Go/badge.svg)](https://github.com/xuender/go-py/actions)
+[![codecov](https://codecov.io/gh/xuender/go-py/branch/main/graph/badge.svg?token=1QQNBH82CM)](https://codecov.io/gh/xuender/go-py)
+[![Go Report Card](https://goreportcard.com/badge/github.com/xuender/go-py)](https://goreportcard.com/report/github.com/xuender/go-py)
+[![GoDoc](https://godoc.org/github.com/xuender/go-py?status.svg)](https://pkg.go.dev/github.com/xuender/go-py)
+[![Gitter](https://badges.gitter.im/xuender-go-py/community.svg)](https://gitter.im/xuender-go-py/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![GitHub license](https://img.shields.io/github/license/xuender/go-py)](https://github.com/xuender/go-py/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/xuender/go-py)](https://github.com/xuender/go-py/issues)
+[![GitHub stars](https://img.shields.io/github/stars/xuender/go-py)](https://github.com/xuender/go-py/stargazers)
 
 中文转拼音.
 
@@ -28,9 +28,9 @@ import (
 
 func main(){
   fmt.Println(py.Pinyin("阿弥陀佛"))
-  fmt.Println(py.Pinyin("阿弥陀佛", gopy.Tone))
-  fmt.Println(py.Pinyin("阿弥陀佛", gopy.NoTone))
-  fmt.Println(py.Pinyin("阿弥陀佛", gopy.Init))
+  fmt.Println(py.Pinyin("阿弥陀佛", py.Tone))
+  fmt.Println(py.Pinyin("阿弥陀佛", py.NoTone))
+  fmt.Println(py.Pinyin("阿弥陀佛", py.Init))
   fmt.Println(py.Initials("阿弥陀佛"))
 
   // output:
