@@ -39,6 +39,14 @@ var phonetic = map[string]string{
 	"m2": "ḿ",
 }
 
+func FromStyle(pinyin string) string {
+	for tone, pho := range phonetic {
+		pinyin = strings.ReplaceAll(pinyin, pho, tone)
+	}
+
+	return pinyin
+}
+
 func Style(pinyin string, option Option) string {
 	switch option {
 	case Tone:
@@ -85,11 +93,51 @@ func ToStrings(pinyin []uint16, option Option) []string {
 	return ret
 }
 
-func RuneOption(han rune, option Option) []string {
+func ToPolyphonic(tones []string, han rune, index int, runes []rune) []string {
+	if index < 0 {
+		return tones
+	}
+
+	poly, has := polyphonic[han]
+	if !has {
+		return tones
+	}
+
+	start := index - base.Two
+	if start < 0 {
+		start = 0
+	}
+
+	end := index + base.Two
+	if end > len(runes) {
+		end = len(runes)
+	}
+
+	sub := string(runes[start:end])
+
+	for _, pol := range poly {
+		for _, word := range pol.Words {
+			if strings.Contains(sub, word) {
+				top := tones[pol.Tone]
+				tones = append(tones[0:pol.Tone], tones[pol.Tone+1:]...)
+
+				return append([]string{top}, tones...)
+			}
+		}
+	}
+
+	return tones
+}
+
+func RuneOption(han rune, option Option, index int, runes []rune) []string {
 	if array, has := dict1[han]; has {
 		return ToStrings(array[:], option)
 	}
 
+	return ToPolyphonic(cool(han, option), han, index, runes)
+}
+
+func cool(han rune, option Option) []string {
 	if array, has := dict2[han]; has {
 		return ToStrings(array[:], option)
 	}
@@ -102,10 +150,6 @@ func RuneOption(han rune, option Option) []string {
 		return ToStrings(array[:], option)
 	}
 
-	return cool(han, option)
-}
-
-func cool(han rune, option Option) []string {
 	if array, has := dict5[han]; has {
 		return ToStrings(array[:], option)
 	}

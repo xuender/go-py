@@ -2588,7 +2588,7 @@
 堞die2
 堟zhua4n
 堠ho4u
-堡ba3o,bu3,pu4
+堡ba3o,bu3,pu4,pu1
 堢ba3o
 堣yu2
 堤di1,ti2,di3,shi2,we2i
@@ -10717,7 +10717,7 @@
 矦ho2u
 矧she3n
 矨yi3ng
-矩ju3
+矩ju3,ju
 矪zho1u
 矫jia3o,jia2o
 矬cuo2
@@ -13182,7 +13182,7 @@
 膇zhui4
 膈ge2
 膉yi4
-膊bo2,po4,lie4
+膊bo2,po4,lie4,bo
 膋lia2o
 膌ji2
 膍pi2
@@ -17347,7 +17347,7 @@
 里li3,li
 重zho4ng,cho2ng,to2ng
 野ye3,shu4
-量lia4ng,lia2ng
+量lia4ng,lia2ng,liang
 釐li2,xi1,la2i,ta1i,la4i,xi3
 金ji1n,ji4n
 釒ji1n

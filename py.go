@@ -2,6 +2,8 @@ package py
 
 import (
 	"strings"
+
+	"golang.org/x/exp/slices"
 )
 
 type Option int
@@ -27,7 +29,7 @@ func Pinyin(str string, options ...Option) []string {
 	}
 
 	for i, han := range runes {
-		ret[i] = RuneOption(han, style)[0]
+		ret[i] = RuneOption(han, style, i, runes)[0]
 	}
 
 	return ret
@@ -43,7 +45,7 @@ func Pinyins(str string, options ...Option) [][]string {
 	}
 
 	for i, han := range runes {
-		ret[i] = RuneOption(han, style)
+		ret[i] = RuneOption(han, style, i, runes)
 	}
 
 	return ret
@@ -53,6 +55,7 @@ func Initials(str string) string {
 	return Py(str, "", Init)
 }
 
-func Rune(han rune) []string {
-	return RuneOption(han, Tone)
+func ToneIndex(tone string) int {
+	// return slices.Index(tones, FromStyle(tone))
+	return slices.Index(tones, tone)
 }

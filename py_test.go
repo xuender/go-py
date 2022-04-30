@@ -9,6 +9,9 @@ import (
 )
 
 func ExamplePinyin() {
+	fmt.Println(py.Pinyin("特长"))
+	fmt.Println(py.Pinyin("长相"))
+
 	fmt.Println(py.Pinyin("阿弥陀佛"))
 	fmt.Println(py.Pinyin("阿弥陀佛", py.Tone))
 	fmt.Println(py.Pinyin("阿弥陀佛", py.NoTone))
@@ -16,17 +19,13 @@ func ExamplePinyin() {
 	fmt.Println(py.Initials("阿弥陀佛"))
 
 	// output:
+	// [te4 cha2ng]
+	// [zha3ng xia1ng]
 	// [a1 mi2 tuo2 fu2]
 	// [ā mí tuó fú]
 	// [a mi tuo fu]
 	// [a m t f]
 	// amtf
-}
-
-func TestRune(t *testing.T) {
-	t.Parallel()
-
-	assert.Equals(t, []string{"1"}, py.Rune('1'))
 }
 
 func TestInitials(t *testing.T) {
@@ -56,4 +55,11 @@ func TestPy(t *testing.T) {
 	t.Parallel()
 
 	assert.Equal(t, "chang zhang", py.Py("厂长", " ", py.NoTone))
+}
+
+func TestToneIndex(t *testing.T) {
+	t.Parallel()
+
+	assert.Equal(t, 1, py.ToneIndex("a1"))
+	assert.Equal(t, 904, py.ToneIndex("pu1"))
 }
