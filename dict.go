@@ -1,4 +1,4 @@
-package gopy
+package py
 
 import (
 	"strings"
@@ -6,8 +6,6 @@ import (
 
 	"github.com/xuender/oils/base"
 )
-
-type Dict map[rune][10]int16
 
 // nolint
 var phonetic = map[string]string{
@@ -75,20 +73,60 @@ func IsHan(han rune) bool {
 	return true
 }
 
-func (p Dict) Rune(han rune, option Option) []string {
-	pinyin, has := p[han]
-	if !has {
-		return []string{string(han)}
-	}
+func ToRunes(option Option, pinyin []uint16) []string {
+	ret := make([]string, len(pinyin))
 
-	ret := []string{}
-
-	for _, pyIndex := range pinyin {
-		out := Style(tones[pyIndex], option)
-		if out != " " {
-			ret = append(ret, out)
-		}
+	for index, num := range pinyin {
+		ret[index] = Style(tones[num], option)
 	}
 
 	return ret
+}
+
+func Runes(han rune, option Option) []string {
+	if array, has := dict1[han]; has {
+		return ToRunes(option, array[:])
+	}
+
+	if array, has := dict2[han]; has {
+		return ToRunes(option, array[:])
+	}
+
+	if array, has := dict3[han]; has {
+		return ToRunes(option, array[:])
+	}
+
+	if array, has := dict4[han]; has {
+		return ToRunes(option, array[:])
+	}
+
+	return cool(han, option)
+}
+
+func cool(han rune, option Option) []string {
+	if array, has := dict5[han]; has {
+		return ToRunes(option, array[:])
+	}
+
+	if array, has := dict6[han]; has {
+		return ToRunes(option, array[:])
+	}
+
+	if array, has := dict7[han]; has {
+		return ToRunes(option, array[:])
+	}
+
+	if array, has := dict8[han]; has {
+		return ToRunes(option, array[:])
+	}
+
+	if array, has := dict9[han]; has {
+		return ToRunes(option, array[:])
+	}
+
+	if array, has := dict10[han]; has {
+		return ToRunes(option, array[:])
+	}
+
+	return []string{string(han)}
 }

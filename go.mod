@@ -1,4 +1,4 @@
-module github.com/xuender/gopy
+module github.com/xuender/go-py
 
 go 1.18
 

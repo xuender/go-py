@@ -1,4 +1,4 @@
-package gopy
+package py
 
 import (
 	"strings"
@@ -18,7 +18,6 @@ func Py(str, sep string, options ...Option) string {
 }
 
 func Pinyin(str string, options ...Option) []string {
-	dic := Dict(dict)
 	runes := []rune(str)
 	ret := make([]string, len(runes))
 	style := Normal
@@ -28,14 +27,13 @@ func Pinyin(str string, options ...Option) []string {
 	}
 
 	for i, han := range runes {
-		ret[i] = dic.Rune(han, style)[0]
+		ret[i] = Runes(han, style)[0]
 	}
 
 	return ret
 }
 
 func Pinyins(str string, options ...Option) [][]string {
-	dic := Dict(dict)
 	runes := []rune(str)
 	ret := make([][]string, len(runes))
 	style := Normal
@@ -45,7 +43,7 @@ func Pinyins(str string, options ...Option) [][]string {
 	}
 
 	for i, han := range runes {
-		ret[i] = dic.Rune(han, style)
+		ret[i] = Runes(han, style)
 	}
 
 	return ret
@@ -56,7 +54,5 @@ func Initials(str string) string {
 }
 
 func Rune(han rune) []string {
-	dic := Dict(dict)
-
-	return dic.Rune(han, Tone)
+	return Runes(han, Tone)
 }

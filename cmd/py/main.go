@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/xuender/gopy"
+	"github.com/xuender/go-py"
 	"github.com/xuender/oils/base"
 	"github.com/xuender/oils/oss"
 )
@@ -43,23 +43,23 @@ func main() {
 	output := base.NewSlice[string]()
 
 	if normal {
-		output.Add(toPinyin(input, sep, hsep, heteronym, gopy.Normal))
+		output.Add(toPinyin(input, sep, hsep, heteronym, py.Normal))
 	}
 
 	if init {
-		output.Add(toPinyin(input, sep, hsep, heteronym, gopy.Init))
+		output.Add(toPinyin(input, sep, hsep, heteronym, py.Init))
 	}
 
 	if noTone {
-		output.Add(toPinyin(input, sep, hsep, heteronym, gopy.NoTone))
+		output.Add(toPinyin(input, sep, hsep, heteronym, py.NoTone))
 	}
 
 	if tone {
-		output.Add(toPinyin(input, sep, hsep, heteronym, gopy.Tone))
+		output.Add(toPinyin(input, sep, hsep, heteronym, py.Tone))
 	}
 
 	if len(output) == 0 {
-		output.Add(gopy.Py(input, sep))
+		output.Add(py.Py(input, sep))
 	}
 
 	for _, out := range output {
@@ -67,32 +67,32 @@ func main() {
 	}
 }
 
-func toPinyin(str, sep, hsep string, heteronym bool, option gopy.Option) string {
+func toPinyin(str, sep, hsep string, heteronym bool, option py.Option) string {
 	if heteronym {
 		slice := base.NewSlice[string]()
-		for _, pinyin := range gopy.Pinyins(str, option) {
+		for _, pinyin := range py.Pinyins(str, option) {
 			slice.Add(strings.Join(pinyin, hsep))
 		}
 
 		return slice.Join(sep)
 	}
 
-	return strings.Join(gopy.Pinyin(str, option), sep)
+	return strings.Join(py.Pinyin(str, option), sep)
 }
 
 func usage() {
-	mod := oss.GetMod("gopy")
+	mod := oss.GetMod("py")
 
-	fmt.Fprintf(flag.CommandLine.Output(), "gopy[%s]\n\n", mod.Version)
+	fmt.Fprintf(flag.CommandLine.Output(), "py[%s]\n\n", mod.Version)
 	fmt.Fprintf(flag.CommandLine.Output(), "chinese to pinyin.\n\n")
 	fmt.Fprintf(flag.CommandLine.Output(), "Usage of %s:\n", os.Args[0])
 	flag.PrintDefaults()
 	fmt.Fprintf(flag.CommandLine.Output(), `
 Examples:
-	gopy 阿弥陀佛
-	gopy -i -s= 阿弥陀佛
-	gopy -t -h -hs=\; 阿弥陀佛
-	gopy -n 阿弥陀佛
+	py 阿弥陀佛
+	py -i -s= 阿弥陀佛
+	py -t -h -hs=\; 阿弥陀佛
+	py -n 阿弥陀佛
 `)
 	fmt.Fprintf(flag.CommandLine.Output(), "\nmod: %s\ngit: %s\n", mod.Path, mod.Sum)
 }
