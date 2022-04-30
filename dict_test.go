@@ -8,13 +8,13 @@ import (
 	"github.com/xuender/oils/assert"
 )
 
-func TestDict_Rune(t *testing.T) {
+func TestRuneOption(t *testing.T) {
 	t.Parallel()
 
-	assert.Equals(t, []string{"1"}, py.Runes('1', py.Normal))
-	assert.Equals(t, []string{"jia4o", "jia1o"}, py.Runes('教', py.Normal))
-	assert.Equal(t, "a1", py.Runes('阿', py.Normal)[0])
-	assert.Equals(t, []string{"zha3ng", "cha2ng"}, py.Runes('长', py.Normal))
+	assert.Equals(t, []string{"1"}, py.RuneOption('1', py.Normal))
+	assert.Equals(t, []string{"jia4o", "jia1o"}, py.RuneOption('教', py.Normal))
+	assert.Equal(t, "a1", py.RuneOption('阿', py.Normal)[0])
+	assert.Equals(t, []string{"zha3ng", "cha2ng"}, py.RuneOption('长', py.Normal))
 }
 
 func TestStyle(t *testing.T) {

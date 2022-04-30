@@ -73,7 +73,7 @@ func IsHan(han rune) bool {
 	return true
 }
 
-func ToRunes(option Option, pinyin []uint16) []string {
+func ToStrings(pinyin []uint16, option Option) []string {
 	ret := make([]string, len(pinyin))
 
 	for index, num := range pinyin {
@@ -83,21 +83,21 @@ func ToRunes(option Option, pinyin []uint16) []string {
 	return ret
 }
 
-func Runes(han rune, option Option) []string {
+func RuneOption(han rune, option Option) []string {
 	if array, has := dict1[han]; has {
-		return ToRunes(option, array[:])
+		return ToStrings(array[:], option)
 	}
 
 	if array, has := dict2[han]; has {
-		return ToRunes(option, array[:])
+		return ToStrings(array[:], option)
 	}
 
 	if array, has := dict3[han]; has {
-		return ToRunes(option, array[:])
+		return ToStrings(array[:], option)
 	}
 
 	if array, has := dict4[han]; has {
-		return ToRunes(option, array[:])
+		return ToStrings(array[:], option)
 	}
 
 	return cool(han, option)
@@ -105,27 +105,27 @@ func Runes(han rune, option Option) []string {
 
 func cool(han rune, option Option) []string {
 	if array, has := dict5[han]; has {
-		return ToRunes(option, array[:])
+		return ToStrings(array[:], option)
 	}
 
 	if array, has := dict6[han]; has {
-		return ToRunes(option, array[:])
+		return ToStrings(array[:], option)
 	}
 
 	if array, has := dict7[han]; has {
-		return ToRunes(option, array[:])
+		return ToStrings(array[:], option)
 	}
 
 	if array, has := dict8[han]; has {
-		return ToRunes(option, array[:])
+		return ToStrings(array[:], option)
 	}
 
 	if array, has := dict9[han]; has {
-		return ToRunes(option, array[:])
+		return ToStrings(array[:], option)
 	}
 
 	if array, has := dict10[han]; has {
-		return ToRunes(option, array[:])
+		return ToStrings(array[:], option)
 	}
 
 	return []string{string(han)}

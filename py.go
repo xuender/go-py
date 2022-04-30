@@ -27,7 +27,7 @@ func Pinyin(str string, options ...Option) []string {
 	}
 
 	for i, han := range runes {
-		ret[i] = Runes(han, style)[0]
+		ret[i] = RuneOption(han, style)[0]
 	}
 
 	return ret
@@ -43,7 +43,7 @@ func Pinyins(str string, options ...Option) [][]string {
 	}
 
 	for i, han := range runes {
-		ret[i] = Runes(han, style)
+		ret[i] = RuneOption(han, style)
 	}
 
 	return ret
@@ -54,5 +54,5 @@ func Initials(str string) string {
 }
 
 func Rune(han rune) []string {
-	return Runes(han, Tone)
+	return RuneOption(han, Tone)
 }
