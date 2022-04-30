@@ -19,5 +19,5 @@ func main() {
 	nf := base.Panic1(os.Create(filepath.Join("data", "p.txt")))
 	defer nf.Close()
 
-	io.WriteString(nf, newStr)
+	_, _ = io.WriteString(nf, newStr)
 }
