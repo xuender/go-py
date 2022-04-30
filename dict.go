@@ -74,11 +74,13 @@ func IsHan(han rune) bool {
 }
 
 func ToStrings(pinyin []uint16, option Option) []string {
-	ret := make([]string, len(pinyin))
+	ret := base.NewSlice[string]()
 
-	for index, num := range pinyin {
-		ret[index] = Style(tones[num], option)
+	for _, num := range pinyin {
+		ret.Add(Style(tones[num], option))
 	}
+
+	ret.Unique()
 
 	return ret
 }

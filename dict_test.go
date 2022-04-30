@@ -15,6 +15,13 @@ func TestRuneOption(t *testing.T) {
 	assert.Equals(t, []string{"jia4o", "jia1o"}, py.RuneOption('教', py.Normal))
 	assert.Equal(t, "a1", py.RuneOption('阿', py.Normal)[0])
 	assert.Equals(t, []string{"zha3ng", "cha2ng"}, py.RuneOption('长', py.Normal))
+	assert.Equals(t, []string{"b", "f"}, py.RuneOption('不', py.Init))
+	assert.Equals(t, []string{"y"}, py.RuneOption('与', py.Init))
+	assert.Equals(t, []string{"d", "c", "t", "z", "s"}, py.RuneOption('撣', py.Init))
+	assert.Equals(t, []string{"d", "t", "z"}, py.RuneOption('敦', py.Init))
+	assert.Equals(t, []string{"b", "f", "l", "p"}, py.RuneOption('賁', py.Init))
+	assert.Equals(t, []string{"m", "j", "l"}, py.RuneOption('繆', py.Init))
+
 }
 
 func TestStyle(t *testing.T) {

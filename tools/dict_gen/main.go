@@ -84,7 +84,7 @@ func createTones(pySlice base.Slice[string]) {
 	_, _ = tonesGo.WriteString("var tones = []string{")
 
 	var (
-		one   byte = ' '
+		one   byte = 'a'
 		index      = 0
 	)
 
